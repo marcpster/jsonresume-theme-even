@@ -15,7 +15,7 @@ const formatCountry = countryCode =>
  * @returns {string}
  */
 export default function Header(basics = {}) {
-  const { email, image, label, location, name, phone, profiles = [], summary, url } = basics
+  const { email, image, label, location, name, phone, profiles = [], summary, url, dob } = basics
 
   return html`
     <header class="masthead">
@@ -44,6 +44,7 @@ export default function Header(basics = {}) {
           </li>
         `}
         ${url && html`<li>${Icon('link')} ${Link(url)}</li>`}
+        ${dob && html`<li>${Icon('calendar')} ${dob}</li>`}
         ${profiles.map(
           ({ network, url, username }) => html`
             <li>
