@@ -1,6 +1,6 @@
-import html from '../utils/html.js'
+import { html } from '@rbardini/html'
 import markdown from '../utils/markdown.js'
-import Duration from './duration.js'
+import DateTimeDuration from './date-time-duration.js'
 import Link from './link.js'
 
 /**
@@ -20,11 +20,10 @@ export default function Education(education = []) {
                 <header>
                   <h4>${Link(url, institution)}</h4>
                   <div class="meta">
-                    ${area && html`<strong>${area}</strong>`}
-                    ${startDate && html`<div>${Duration(startDate, endDate)}</div>`}
+                    <div>${[studyType, area && html`<strong>${area}</strong>`].filter(Boolean).join(' in ')}</div>
+                    ${startDate && html`<div>${DateTimeDuration(startDate, endDate)}</div>`}
                   </div>
                 </header>
-                ${studyType && markdown(studyType)}
                 ${courses.length > 0 &&
                 html`
                   <h5>Courses</h5>

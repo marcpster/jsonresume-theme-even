@@ -288,3 +288,13 @@ blockquote > * + *,
     grid-template-columns: repeat(auto-fit, minmax(calc((100% - 1em) / 2), 1fr));
   }
 }
+
+time + time-duration::before {
+  content: '· ';
+}
+
+@media print {
+  time-duration {
+    display: none;
+  }
+}
